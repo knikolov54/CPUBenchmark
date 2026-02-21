@@ -7,12 +7,17 @@ public class CpuTester
     public TestResult RunTest(TestType testType)
     {
         Console.WriteLine("Running test type: " + testType);
-       
         TestResult result = new TestResult();
         
-        result.TestType = testType;
-        result.Value = 2343;
+        if (testType == TestType.MatrixMultiplication)
+        {
+            ICpuTest test = new MatrixMultiplication();
+
+            result = test.Run();
+        }
+       
         
+ 
         return result;
     }
 }
