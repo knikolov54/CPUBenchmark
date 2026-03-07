@@ -1,38 +1,20 @@
-﻿using System.Diagnostics;
+﻿using CPUBenchmark.Application;
 
-namespace CPUBenchmark.Models;
+namespace CPUBenchmark.CpuTests;
 
-public class CpuIntensiveBranching : ICpuTest
+public class CpuIntensiveBranching(int iterations) : CpuTestBase
 {
-    public TestResult Run()
-    {
-        Console.Write("Enter iteration count: ");
-        long iterations = long.Parse(Console.ReadLine());
-
-        var timer = new Stopwatch();
-
-        timer.Start();
-
-        long result = Execute(iterations);
-
-        timer.Stop();
-
-        return new TestResult
-        {
-            TestType = TestType.CpuIntensiveBranching,
-            Value = timer.ElapsedMilliseconds
-        };
-    }
+    public int IterationsCount { get; init; } = iterations;
 
     /// Branch‑Heavy CPU Load (stresses branch prediction)
     /// => Lots of unpredictable branches
     /// => Integer arithmetic + bitwise ops
     /// => Good for testing CPU branch prediction behavior
-    private long Execute(long iterations)
+    protected override void ExecuteTest()
     {
         long sum = 0;
 
-        for (long i = 0; i < iterations; i++)
+        for (long i = 0; i < this.IterationsCount; i++)
         {
             if ((i * 13) % 7 == 0)
                 sum += i;
@@ -41,7 +23,5 @@ public class CpuIntensiveBranching : ICpuTest
             else
                 sum ^= i;
         }
-
-        return sum;
     }
 }

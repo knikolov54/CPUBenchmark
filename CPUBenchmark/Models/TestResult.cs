@@ -4,5 +4,5 @@ public class TestResult
 {
     public TestType TestType { get; set; }
     
-    public long Value { get; set; }
+    public long TimeElapsed { get; set; }
 }

@@ -1,35 +1,15 @@
-﻿using System.Diagnostics;
+﻿using CPUBenchmark.Application;
 
-namespace CPUBenchmark.Models;
+namespace CPUBenchmark.CpuTests;
 
-public class CpuIntensiveMath : ICpuTest
+public class CpuIntensiveMath : CpuTestBase
 {
-    public CpuIntensiveMath()
-    {
-    }
-
-    public TestResult Run()
-    {
-        var timer = new Stopwatch();
-        timer.Start();
-
-        ExecuteMathTest();
-
-        timer.Stop();
-
-        return new TestResult
-        {
-            TestType = TestType.CpuIntensiveMath,
-            Value = timer.ElapsedMilliseconds
-        };
-    }
-
     /// Pure Math Loop (tight, predictable, very CPU‑heavy)
     /// This is the classic approach: a huge number of floating‑point operations in a tight loop.
     /// => Heavy use of Math functions (slow)
     /// => Tight loop with no I/O
     /// => Predictable branching → maximizes raw CPU usage
-    private void ExecuteMathTest()
+    protected override void ExecuteTest()
     {
         long iterations = 500_000_000;
         double result = 0;

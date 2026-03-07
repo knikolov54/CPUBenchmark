@@ -1,38 +1,20 @@
-﻿using System.Diagnostics;
+﻿using CPUBenchmark.Application;
 
-namespace CPUBenchmark.Models;
+namespace CPUBenchmark.CpuTests;
 
-public class PrimeCalculation : ICpuTest
+public class PrimeCalculation(int maxNumber) : CpuTestBase
 {
-    public TestResult Run()
-    {
-        Console.Write("Enter max number: ");
-        int max = int.Parse(Console.ReadLine());
-
-        var timer = new Stopwatch();
-
-        timer.Start();
-
-        CalculatePrimes(max);
-
-        timer.Stop();
-
-        return new TestResult
-        {
-            TestType = TestType.PrimeCalculation,
-            Value = timer.ElapsedMilliseconds
-        };
-    }
+    public int MaxNumber { get; init; } = maxNumber;
 
     /// Prime Number Calculation (real‑world CPU load)
     /// => Nested loops
     /// => Non‑trivial math
     /// => Good for simulating real computational workloads
-    private void CalculatePrimes(int max)
+    protected override void ExecuteTest()
     {
         var primes = new List<int>();
 
-        for (int i = 2; i <= max; i++)
+        for (int i = 2; i <= this.MaxNumber; i++)
         {
             bool isPrime = true;
 
