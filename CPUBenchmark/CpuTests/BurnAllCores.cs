@@ -24,6 +24,9 @@ public class ParallelCpuBurn : ICpuTest
         };
     }
 
+    /// Parallel CPU Burn (maxes out all cores)
+    /// => Uses Parallel.For to spawn work on all logical cores
+    /// => Tight loop ensures 100% CPU usage per core
     private void BurnAllCores(int seconds)
     {
         var end = DateTime.UtcNow.AddSeconds(seconds);

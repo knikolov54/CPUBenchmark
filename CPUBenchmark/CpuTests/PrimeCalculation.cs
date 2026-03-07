@@ -24,6 +24,10 @@ public class PrimeCalculation : ICpuTest
         };
     }
 
+    /// Prime Number Calculation (real‑world CPU load)
+    /// => Nested loops
+    /// => Non‑trivial math
+    /// => Good for simulating real computational workloads
     private void CalculatePrimes(int max)
     {
         var primes = new List<int>();

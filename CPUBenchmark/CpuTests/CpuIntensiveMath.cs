@@ -24,6 +24,11 @@ public class CpuIntensiveMath : ICpuTest
         };
     }
 
+    /// Pure Math Loop (tight, predictable, very CPU‑heavy)
+    /// This is the classic approach: a huge number of floating‑point operations in a tight loop.
+    /// => Heavy use of Math functions (slow)
+    /// => Tight loop with no I/O
+    /// => Predictable branching → maximizes raw CPU usage
     private void ExecuteMathTest()
     {
         long iterations = 500_000_000;
@@ -33,5 +38,6 @@ public class CpuIntensiveMath : ICpuTest
         {
             result += Math.Sqrt(i) * Math.Sin(i) / (Math.Cos(i) + 1.000001);
         }
-    }    
+    }
+}
         

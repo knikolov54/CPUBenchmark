@@ -24,6 +24,10 @@ public class CpuIntensiveBranching : ICpuTest
         };
     }
 
+    /// Branch‑Heavy CPU Load (stresses branch prediction)
+    /// => Lots of unpredictable branches
+    /// => Integer arithmetic + bitwise ops
+    /// => Good for testing CPU branch prediction behavior
     private long Execute(long iterations)
     {
         long sum = 0;
