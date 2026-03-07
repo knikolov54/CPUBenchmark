@@ -9,9 +9,9 @@ public class CpuTester
         Console.WriteLine("Running test type: " + testType);
         TestResult result = new TestResult();
         
-        if (testType == TestType.MatrixMultiplication)
+        if (testType == TestType.PrimeCalculation)
         {
-            ICpuTest test = new MatrixMultiplication();
+            ICpuTest test = new PrimeCalculation();
 
             result = test.Run();
         }

@@ -7,10 +7,10 @@ public class TesterView
     public TestType ShowAvailableTests()
     {
         Console.WriteLine("Choose a test:");
-        Console.WriteLine("1. Fibbonaci");
-        Console.WriteLine("2. Matrix Multiplication");
-        Console.WriteLine("3. Trigonometry");
-        Console.WriteLine("4. Floating point operations");
+        Console.WriteLine("1. CpuIntensiveMath");
+        Console.WriteLine("2. PrimeCalculation");
+        Console.WriteLine("3. CpuIntensiveMath");
+        Console.WriteLine("4. ParallelCpuBurn");
         
         int input = int.Parse(Console.ReadLine());
         
