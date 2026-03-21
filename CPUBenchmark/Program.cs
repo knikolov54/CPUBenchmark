@@ -8,12 +8,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        var view = new TesterView();
-        var tester = new CpuTester();
+        TesterView view = new TesterView();
+        
+        TestRunner testRunner = new TestRunner();
 
         TestType userInput = view.ShowAvailableTests();
 
-        TestResult testResult = tester.RunTest(userInput);
+        TestResult testResult = testRunner.RunTest(userInput);
         
         view.ShowTestResults(testResult);
     }
