@@ -1,8 +1,9 @@
 ﻿using CPUBenchmark.Application;
+using CPUBenchmark.Models;
 
 namespace CPUBenchmark.CpuTests;
 
-public class ParallelCpuBurn(int seconds) : CpuTestBase
+public class ParallelCpuBurn(int seconds) : CpuTestBase("Parallel CPU Run")
 {
     private int Seconds { get; init; } = seconds;
 
@@ -22,4 +23,6 @@ public class ParallelCpuBurn(int seconds) : CpuTestBase
             }
         });
     }
+
+    protected override TestType GetTestType() => TestType.ParallelCpuBurn;
 }

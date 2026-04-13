@@ -1,8 +1,9 @@
 ﻿using CPUBenchmark.Application;
+using CPUBenchmark.Models;
 
 namespace CPUBenchmark.CpuTests;
 
-public class CpuIntensiveMath : CpuTestBase
+public class CpuIntensiveMath() : CpuTestBase("Math Loop")
 {
     /// Pure Math Loop (tight, predictable, very CPU‑heavy)
     /// This is the classic approach: a huge number of floating‑point operations in a tight loop.
@@ -19,5 +20,7 @@ public class CpuIntensiveMath : CpuTestBase
             result += Math.Sqrt(i) * Math.Sin(i) / (Math.Cos(i) + 1.000001);
         }
     }
+
+    protected override TestType GetTestType() => TestType.CpuIntensiveMath;
 }
         

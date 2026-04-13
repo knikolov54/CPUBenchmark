@@ -1,5 +1,6 @@
-﻿using CPUBenchmark.Models;
-using CPUBenchmark.Application;
+﻿using CPUBenchmark.Application;
+using CPUBenchmark.Controllers;
+using CPUBenchmark.Models;
 using CPUBenchmark.Views;
 
 namespace CPUBenchmark;
@@ -8,14 +9,19 @@ class Program
 {
     static void Main(string[] args)
     {
-        TesterView view = new TesterView();
-        
-        TestRunner testRunner = new TestRunner();
+        IConsoleView view = new ConsoleView();
 
-        TestType userInput = view.ShowAvailableTests();
+        view.ShowTitle();
+        view.ShowCpuStatus();
 
-        TestResult testResult = testRunner.RunTest(userInput);
+        TestType userInput = view.ShowMenuAndGetChoice();
         
-        view.ShowTestResults(testResult);
+        var runner = new TestRunner(view);
+        
+       TestResult testResult = runner.RunTest(userInput);
+
+        view.RenderResults(testResult);
+
+        view.PromptContinue();
     }
 }

@@ -1,8 +1,9 @@
 ﻿using CPUBenchmark.Application;
+using CPUBenchmark.Models;
 
 namespace CPUBenchmark.CpuTests;
 
-public class PrimeCalculation(int maxNumber) : CpuTestBase
+public class PrimeCalculation(int maxNumber) : CpuTestBase("Prime Number Calculation")
 {
     public int MaxNumber { get; init; } = maxNumber;
 
@@ -31,4 +32,6 @@ public class PrimeCalculation(int maxNumber) : CpuTestBase
                 primes.Add(i);
         }
     }
+
+    protected override TestType GetTestType() => TestType.PrimeCalculation;
 }

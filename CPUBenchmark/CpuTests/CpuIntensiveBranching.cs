@@ -1,8 +1,9 @@
 ﻿using CPUBenchmark.Application;
+using CPUBenchmark.Models;
 
 namespace CPUBenchmark.CpuTests;
 
-public class CpuIntensiveBranching(int iterations) : CpuTestBase
+public class CpuIntensiveBranching(int iterations) : CpuTestBase("Branch-Heavy CPU Load")
 {
     public int IterationsCount { get; init; } = iterations;
 
@@ -24,4 +25,6 @@ public class CpuIntensiveBranching(int iterations) : CpuTestBase
                 sum ^= i;
         }
     }
+
+    protected override TestType GetTestType() => TestType.CpuIntensiveBranching;
 }
